@@ -8,6 +8,10 @@
   font-family: 'Urbanist';
 }
 
+body {
+  overflow-y: auto;
+}
+
 #hero {
   background-image: url('./assets/images/main-scaled.jpg');
   background-position: center top;

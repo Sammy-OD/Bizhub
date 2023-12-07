@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom"
 
-
-const Login = () => {
+const Register = () => {
   return (
     <div className='tracking-wide container mx-auto h-[100vh] p-4'>
-      <div className="flex justify-center items-center h-full w-full min-h-[520px]">
+      <div className="flex justify-center items-center h-full w-full min-h-[550px]">
         <div className="w-96">
           <h1 className="text-center text-5xl font-semibold mb-3">BizHub</h1>
           <div>
@@ -17,8 +16,12 @@ const Login = () => {
                 <label htmlFor="password" className="text-xl">Password</label>
                 <input className="p-2 outline outline-orange-600" type="password" />
               </div>
-              <button className="p-2 text-center w-full bg-orange-600 text-white mb-4">Login</button>
-              <p className="text-center">Don't have an account? <NavLink to="/register" className="text-orange-600">Register</NavLink></p>
+              <div className="flex flex-col gap-2 mb-6">
+                <label htmlFor="confirm_password" className="text-xl">Confirm Password</label>
+                <input className="p-2 outline outline-orange-600" type="password" />
+              </div>
+              <button className="p-2 text-center w-full bg-orange-600 text-white mb-4">Register</button>
+              <p className="text-center">Already have an account? <NavLink to="/login" className="text-orange-600">Login</NavLink></p>
             </form>
 
             <div className="mt-8 text-center">
@@ -31,4 +34,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
