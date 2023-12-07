@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import img from '../../assets/images/main-scaled.jpg';
 
 const ListingCard = () => {
@@ -8,7 +9,7 @@ const ListingCard = () => {
       </div>
       <div className='w-full md:w-1/2 p-4 flex flex-col justify-between gap-8'>
         <div>
-          <h4 className='text-2xl font-semibold mb-3'>Business Name</h4>
+          <NavLink to="/listing"><h4 className='text-2xl font-semibold mb-3'>Business Name</h4></NavLink>
           <p className='text-neutral-500 mb-3'>This is just some little content to fill in space for business description</p>
           <div className='flex gap-2'>
             <span className='text-white bg-orange-600 p-1 px-2 rounded-full text-xs'>carpentry</span>
