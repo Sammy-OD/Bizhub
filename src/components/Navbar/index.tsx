@@ -35,8 +35,8 @@ const Navbar = () => {
           <li>
             <NavLink className="transition duration-300 hover:text-orange-600" to="/register">Register</NavLink>
           </li>
-          <li className="bg-orange-600 p-2 px-4 rounded-full">
-            <a href="#">&#x2b; Add Listing</a>
+          <li>
+            <NavLink className="bg-orange-600 p-3 px-4 rounded-full" to="/create">&#x2b; Add Listing</NavLink>
           </li>
         </ul>
 

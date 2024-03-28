@@ -1,6 +1,34 @@
+import { useEffect, useState } from 'react'
 import { Footer, ListingCard, Navbar } from '../../components'
 
+interface Listing {
+  id: string;
+  name: string;
+  city: string;
+  country: string;
+  address: string;
+  description: string;
+  imageUrls: string[];
+}
+
 const Home = () => {
+  const [listings, setListings] = useState<Listing[]>([])
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      const res = await fetch('http://localhost:3000/listings', {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const result = await res.json();
+      setListings(result);
+    }
+
+    fetchListings();
+  }, [])
+
   return (
     <div className='tracking-wide'>
       {/* hero */}
@@ -22,11 +50,17 @@ const Home = () => {
           <h2 className='text-3xl'>Business Listings</h2>
         </section>
 
-        <section className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols- gap-[4rem]'>
-          {Array(4).fill(0).map((_, index) => (
-            <ListingCard key={index} />
-          ))}
-        </section>
+        {listings ?
+          <section className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols- gap-[4rem]'>
+              {listings.map((listing, i) => (
+                <ListingCard key={i} listing={listing} />
+              ))}
+          </section>
+          :
+          <section className='h-[100px]'>
+            <p className='text-center text-xl'>No Listings Available</p>
+          </section>
+        }
       </main>
 
       <Footer />
