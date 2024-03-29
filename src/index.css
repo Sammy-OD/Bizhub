@@ -19,3 +19,10 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+#hero2 {
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
+import { jwtDecode } from "jwt-decode";
+
+import { useAppSelector } from "../../store/hooks";
+import { selectToken } from "../../store/features/authSlice";
+
+interface DecodedToken {
+  sub: string;
+  // Add other properties if needed
+  firstname: string
+}
 
 const Navbar = () => {
   const [scrollDistance, setScrollDistance] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const token = useAppSelector(selectToken);
+  const decoded = token ? jwtDecode(token) as DecodedToken : null;
 
   const handleScroll = () => {
     setScrollDistance(window.scrollY);
@@ -23,18 +35,25 @@ const Navbar = () => {
     <div className={`transition-all duration-300 fixed w-full z-40 py-4 backdrop-blur ${scrollDistance > 150 ? "bg-black/80 py-[4px]" : null}`}>
       <nav className='container relative flex mx-auto p-4 justify-between items-center'>
         <div className='text-white font-semibold text-3xl'>
-          BizHub
+          <NavLink to="/">BizHub</NavLink>
         </div>
         <ul className='hidden md:flex items-center gap-7 text-white'>
-          <li>
+          {/* <li>
             <NavLink className="transition duration-300 hover:text-orange-600" to='/'>Home</NavLink>
-          </li>
-          <li>
-            <NavLink className="transition duration-300 hover:text-orange-600" to="/login">Login</NavLink>
-          </li>
-          <li>
-            <NavLink className="transition duration-300 hover:text-orange-600" to="/register">Register</NavLink>
-          </li>
+          </li> */}
+          {token ?
+            <li>
+              <p className="font-bold">Hello {decoded && decoded.firstname}</p>
+            </li>
+            : <>
+              <li>
+                <NavLink className="transition duration-300 hover:text-orange-600" to="/login">Login</NavLink>
+              </li>
+              <li>
+                <NavLink className="transition duration-300 hover:text-orange-600" to="/register">Register</NavLink>
+              </li>
+            </>
+          }
           <li>
             <NavLink className="bg-orange-600 p-3 px-4 rounded-full" to="/create">&#x2b; Add Listing</NavLink>
           </li>
@@ -43,15 +62,22 @@ const Navbar = () => {
         {/* mobile */}
         {menuOpen && 
           <ul className='absolute top-full left-0 flex md:hidden flex-col items-center gap-7 bg-black text-white w-full py-8'>
-            <li>
+            {/* <li>
               <NavLink className="transition duration-300 hover:text-orange-600" to='/'>Home</NavLink>
-            </li>
+            </li> */}
+          {token ?
             <li>
-              <NavLink className="transition duration-300 hover:text-orange-600" to="/login">Login</NavLink>
+              <p>Hello {decoded && decoded.firstname}</p>
             </li>
-            <li>
-              <NavLink className="transition duration-300 hover:text-orange-600" to="/register">Register</NavLink>
-            </li>
+            : <>
+              <li>
+                <NavLink className="transition duration-300 hover:text-orange-600" to="/login">Login</NavLink>
+              </li>
+              <li>
+                <NavLink className="transition duration-300 hover:text-orange-600" to="/register">Register</NavLink>
+              </li>
+            </>
+          }
             <li className="bg-orange-600 p-2 px-4 rounded-full">
               <a href="#">&#x2b; Add Listing</a>
             </li>

@@ -12,7 +12,7 @@ interface Listing {
 }
 
 const Home = () => {
-  const [listings, setListings] = useState<Listing[]>([])
+  const [listings, setListings] = useState<Listing[] | null>(null);
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -23,6 +23,11 @@ const Home = () => {
       });
 
       const result = await res.json();
+      
+      if (result.length == 0) {
+        return;
+      }
+
       setListings(result);
     }
 
@@ -57,7 +62,7 @@ const Home = () => {
               ))}
           </section>
           :
-          <section className='h-[100px]'>
+          <section className='flex w-full h-[100px] justify-center align-middle'>
             <p className='text-center text-xl'>No Listings Available</p>
           </section>
         }

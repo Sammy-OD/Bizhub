@@ -1,11 +1,14 @@
 import { useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
+import { useAppDispatch } from "../../store/hooks";
+import { login } from "../../store/features/authSlice";
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const loginUser = async () => {
     try {
@@ -29,6 +32,8 @@ const Login = () => {
       if (result.statusCode === 403) {
         return console.log(result.message);
       }
+
+      dispatch(login(result.accessToken));
 
       navigate('/');
     } catch (error) {

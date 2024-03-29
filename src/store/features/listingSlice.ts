@@ -22,10 +22,12 @@ export const ListingSlice = createSlice({
   name: 'listing',
   initialState,
   reducers: {
-
+    addListing: (state, action) => {
+      state.listings.push(action.payload);
+    }
   }
 });
 
-export const {} = ListingSlice.actions;
+export const { addListing } = ListingSlice.actions;
 
 export default ListingSlice.reducer;

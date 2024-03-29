@@ -17,18 +17,18 @@ interface ListingCardProps {
 
 const ListingCard: React.FC<ListingCardProps> = ({listing}) => {
   return (
-    <div className='transition duration-300 flex flex-col md:flex-row min-h-[250px] shadow hover:shadow-lg'>
+    <div className='transition duration-300 flex flex-col md:flex-row h-[450px] md:h-[250px] shadow hover:shadow-lg'>
       <div className='w-full h-1/2 md:w-1/2 md:h-full'>
         <img src={listing.imageUrls[0]} className='w-full h-full object-cover' alt="" />
       </div>
       <div className='w-full md:w-1/2 p-4 flex flex-col justify-between gap-8'>
         <div>
-          <NavLink to="/listing"><h4 className='text-2xl font-semibold mb-3'>{listing.name}</h4></NavLink>
-          <p className='text-neutral-500 mb-3'>{listing.description}</p>
-          <div className='flex gap-2'>
+          <NavLink to={`/listing/${listing.id}`}><h4 className='text-2xl font-semibold mb-3'>{listing.name}</h4></NavLink>
+          <p className='text-neutral-500 mb-3 truncate'>{listing.description}</p>
+          {/* <div className='flex gap-2'>
             <span className='text-white bg-orange-600 p-1 px-2 rounded-full text-xs'>carpentry</span>
             <span className='text-white bg-orange-600 p-1 px-2 rounded-full text-xs'>artisan</span>
-          </div>
+          </div> */}
         </div>
         <div className='flex gap-1.5 items-center'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-orange-600">
