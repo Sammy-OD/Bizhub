@@ -36,7 +36,7 @@ const Create = () => {
     formDataToSend.append('country', formData.country);
     formDataToSend.append('address', formData.address);
     formDataToSend.append('description', formData.description);
-    formData.images.forEach((image: any, index: any) => {
+    formData.images.forEach((image: any) => {
       formDataToSend.append('images', image);
     });
 
