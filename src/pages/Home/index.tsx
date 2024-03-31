@@ -44,8 +44,8 @@ const Home = () => {
 
           {/* hero text */}
           <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center'>
-            <h1 className='text-white text-6xl font-semibold mb-7'>Explore your City</h1>
-            <h3 className='text-white'>Let's uncover the best places to do business</h3>
+            <h1 className='text-white text-4xl md:text-6xl font-semibold mb-7 text-center'>Explore your City</h1>
+            <h3 className='text-white text-center'>Let's uncover the best places to do business</h3>
           </div>
         </div>
       </div>

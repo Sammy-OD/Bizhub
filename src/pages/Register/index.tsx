@@ -28,8 +28,6 @@ const Register = () => {
 
       const result = await res.json();
 
-      console.log(result);
-
       if (result.statusCode === 409) {
         return console.log(result.message);
       }
@@ -49,7 +47,7 @@ const Register = () => {
 
   return (
     <div className='tracking-wide container mx-auto h-[100vh] p-4'>
-      <div className="flex justify-center items-center h-full w-full min-h-[550px]">
+      <div className="flex justify-center items-center h-full w-full min-h-[850px]">
         <div className="w-96">
           <h1 className="text-center text-5xl font-semibold mb-3">BizHub</h1>
           <div>

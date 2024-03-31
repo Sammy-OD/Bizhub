@@ -24,7 +24,7 @@ const ListingCard: React.FC<ListingCardProps> = ({listing}) => {
       <div className='w-full md:w-1/2 p-4 flex flex-col justify-between gap-8'>
         <div>
           <NavLink to={`/listing/${listing.id}`}><h4 className='text-2xl font-semibold mb-3'>{listing.name}</h4></NavLink>
-          <p className='text-neutral-500 mb-3 truncate'>{listing.description}</p>
+          <p className='text-neutral-500 mb-3 truncate-words'>{listing.description}</p>
           {/* <div className='flex gap-2'>
             <span className='text-white bg-orange-600 p-1 px-2 rounded-full text-xs'>carpentry</span>
             <span className='text-white bg-orange-600 p-1 px-2 rounded-full text-xs'>artisan</span>

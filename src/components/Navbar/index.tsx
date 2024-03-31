@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { jwtDecode } from "jwt-decode";
 
-import { useAppSelector } from "../../store/hooks";
-import { selectToken } from "../../store/features/authSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { logout, selectToken } from "../../store/features/authSlice";
 
 interface DecodedToken {
   sub: string;
@@ -16,6 +16,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const token = useAppSelector(selectToken);
   const decoded = token ? jwtDecode(token) as DecodedToken : null;
+  const dispatch = useAppDispatch();
 
   const handleScroll = () => {
     setScrollDistance(window.scrollY);
@@ -42,9 +43,17 @@ const Navbar = () => {
             <NavLink className="transition duration-300 hover:text-orange-600" to='/'>Home</NavLink>
           </li> */}
           {token ?
-            <li>
-              <p className="font-bold">Hello {decoded && decoded.firstname}</p>
-            </li>
+            <>
+              <li>
+                <button onClick={()=> dispatch(logout())}>
+                  <i className="fa-solid fa-power-off transition duration-300 hover:text-orange-600"></i>
+                </button>
+              </li>
+              <li>
+                <p className="font-bold">Hello {decoded && decoded.firstname}</p>
+              </li>
+            </>
+
             : <>
               <li>
                 <NavLink className="transition duration-300 hover:text-orange-600" to="/login">Login</NavLink>
