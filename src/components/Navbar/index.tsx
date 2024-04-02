@@ -75,9 +75,16 @@ const Navbar = () => {
               <NavLink className="transition duration-300 hover:text-orange-600" to='/'>Home</NavLink>
             </li> */}
           {token ?
-            <li>
-              <p>Hello {decoded && decoded.firstname}</p>
-            </li>
+            <>
+              <li>
+                <button onClick={()=> dispatch(logout())}>
+                  <i className="fa-solid fa-power-off transition duration-300 hover:text-orange-600"></i>
+                </button>
+              </li>
+              <li>
+                <p className="font-bold">Hello {decoded && decoded.firstname}</p>
+              </li>
+            </>
             : <>
               <li>
                 <NavLink className="transition duration-300 hover:text-orange-600" to="/login">Login</NavLink>
