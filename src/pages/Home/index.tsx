@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Footer, ListingCard, Navbar } from '../../components'
+import { BASE_URL } from '../../config';
 
 interface Listing {
   id: string;
@@ -16,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchListings = async () => {
-      const res = await fetch('http://localhost:3000/listings', {
+      const res = await fetch(`${BASE_URL}/listings`, {
         headers: {
           'Content-Type': 'application/json'
         }

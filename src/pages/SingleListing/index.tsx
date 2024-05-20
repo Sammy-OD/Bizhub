@@ -1,6 +1,7 @@
 import { Footer, Navbar } from "../../components"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../config";
 
 interface Listing {
   id: string;
@@ -40,7 +41,7 @@ const SingleListing = () => {
 
   useEffect(() => {
     const fetchListing = async () => {
-      const res = await fetch(`http://localhost:3000/listings/${id}`, {
+      const res = await fetch(`${BASE_URL}/listings/${id}`, {
         headers: {
           'Content-Type': 'application/json'
         }

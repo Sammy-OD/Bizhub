@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom"
+import { BASE_URL } from "../../config";
 
 const Register = () => {
   const [firstname, setFirstname] = useState<string>('');
@@ -20,7 +21,7 @@ const Register = () => {
         return console.log('passwords do not match');
       }
 
-      const res = await fetch('http://localhost:3000/auth/register', {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({email, firstname, lastname, password, phone})

@@ -7,7 +7,6 @@ import { logout, selectToken } from "../../store/features/authSlice";
 
 interface DecodedToken {
   sub: string;
-  // Add other properties if needed
   firstname: string
 }
 

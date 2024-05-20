@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logout, selectToken } from "../../store/features/authSlice";
 import { useState } from "react";
+import { BASE_URL } from "../../config";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const Create = () => {
       formDataToSend.append('images', image);
     });
 
-    fetch('http://localhost:3000/listings', {
+    fetch(`${BASE_URL}/listings`, {
       headers: {
         'Authorization': `Bearer ${token}`
       },

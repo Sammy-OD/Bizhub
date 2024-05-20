@@ -2,6 +2,7 @@ import { useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../../store/hooks";
 import { login } from "../../store/features/authSlice";
+import { BASE_URL } from "../../config";
 
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
         return console.log('field cannot be empty');
       }
 
-      const res = await fetch('http://localhost:3000/auth/login', {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({email, password})
